@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'ab';
+    src: url('../fonts/SVN-Avobold.woff2') format('woff2'),
+        url('../fonts/SVN-Avobold.woff') format('woff');
+    font-style: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'fmain';
+    src: url('../fonts/SVN-Avo.woff2') format('woff2'),
+        url('../fonts/SVN-Avo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
