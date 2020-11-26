@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 2 - Exam </title>
+</head>
+<body>
+    <h1>0</h1>
+    <button class="counter" id="increase">increase</button>
+    <button class="counter" id="decrease">decrease</button>
+    <button class="counter" id="reset">reset</button>
+</body>
+<script>
+
+    //Exercise 4:
+    class Counter {
+        constructor(init){
+            this.count = init || 0;
+        }
+        increase(){
+            this.count = ++this.count;
+            return this.count
+        }
+        decrease(){
+            this.count = --this.count;
+            return this.count
+
+        }
+        reset(){
+            this.count = 0;
+            return this.count
+
+        }
+    }
+    let counter = new Counter();
+    document.getElementById('increase').addEventListener('click', function() {
+        let c = counter.increase();
+        document.getElementsByTagName('h1')[0].innerHTML = c;
+        console.log(c)
+    })
+    document.getElementById('decrease').addEventListener('click', function() {
+        let c = counter.decrease();
+        document.getElementsByTagName('h1')[0].innerHTML = c;
+        console.log(c)
+    })
+    document.getElementById('reset').addEventListener('click', function() {
+        let c = counter.reset();
+        document.getElementsByTagName('h1')[0].innerHTML = c;
+        console.log(c)
+    })
+
+    //Exercise 10:
+    Array.prototype.myFilter = function(callback) {
+        let arrReturn = []
+        
+
+        for (i = 0; i < this.length; i++) {
+            if(callback(this[i])){
+                arrReturn.push(this[i])
+            }
+        }
+        return arrReturn
+    };
+    let arr = [1,2,3]
+    console.log (arr.myFilter(e => e>=2))
+
+    //exercise 12:
+    function changeNumber (init){
+        let count = init || 0;
+        return [
+            count,
+             () => {
+                ++count
+                return count;
+            },
+            () => {
+                --count
+                return count;
+            },
+            () => {
+                count = 0
+                return count;
+            },
+        ]
+    }
+
+    [count, increase, decrease, reset] = changeNumber(1);
+    console.log(count)
+    console.log(increase())
+    console.log(increase())
+    console.log(increase())
+    console.log( reset())
+    console.log(decrease())
+    console.log(decrease())
+    console.log(decrease())
+  
+</script>
+</html>
