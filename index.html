@@ -217,17 +217,18 @@
                 </div>
             </div>
         </section>
-        <section class="info">
+        <section class="info pd">
             <div class="container">
-                <div class="info-grid">
-                    <div class="grid-item">
-                        <h2 class="info__title title-main">những điều
-                            <span class="blue">đặc biệt</span>  tại cfd</h2>
-                            <div class="info__img">
-                                <img src="img/banner2.jpg" alt="">
-                            </div>
+                
+                <div class="info-grid row">
+                    <div class="info__intro grid-item col-md-6 col-xs-12">
+                        <h2 class="info__intro-title title-main">những điều
+                            <span class="green">đặc biệt</span>  tại cfd</h2>
+                        <div class="info__intro-img">
+                            <img src="img/banner2.jpg" alt="">
+                        </div>
                     </div>
-                    <div class="grid-item">
+                    <div class=" info__detail grid-item col-md-6 col-xs-12">
                         <h3 class="title">
                             Không cam kết đầu ra
                         </h3>
@@ -250,33 +251,41 @@
                 </div>  
             </div>
         </section>
-        <section class="feedback">
+        <section class="feedback pd">
             <div class="container">
-                <h2 class="offline__title title-main">
+                <h2 class="feedback__title title-main">
                     <span class="small">cảm nhận</span>
                     <span>thành viên</span>
                 </h2>
-                <div class="row">
-                    <div class="col-md-1 feedback__btn-prev"></div>
-                    <div class="col-md-7 feedback__textbox">
+                <div class=" feedback__content row align-items-center">
+                    <div class="col-md-1">
+                        <div class="feedback__content-btn -prev">
+                            <img src="img/prev-arrow-icon.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-md-7 feedback__content-textbox">
                         <i class="quotes"><img src="img/double-quotes 1.svg" alt=""></i>
-                        <p class="feedback__textbox-name">Tiến Tài</p>
-                        <p class="feedback__textbox-class">Thành viên CFD1</p>
-                        <p class="feedback__textbox-content">Mentor có tâm, tận tình. Mình tìm được hướng đi trong lập trình front-end qua khóa học. Like cho 4 mentor.</p>
+                        <p class="name">Tiến Tài</p>
+                        <p class="position">Thành viên CFD1</p>
+                        <p class="content">Mentor có tâm, tận tình. Mình tìm được hướng đi trong lập trình front-end qua khóa học. Like cho 4 mentor.</p>
                         <div class="bottom">
-                            <i class="icon-fb"><img src="img/fb-icon.svg" alt=""></i>
+                            <a href="https://www.facebook.com/" class="icon-fb"><img src="img/fb-icon.svg" alt=""></a>
                             <span class="date">08/09/2020</span>
                         </div>
                     </div>
                   
-                    <div class="col-md-4 feedback__avatar">
+                    <div class="col-md-3 feedback__content-avatar">
                         <img src="img/member.jpg" alt="">
                     </div>
-                    <div class="col-md-1 feedback__btn-next"></div>
+                    <div class="col-md-1">
+                        <div class="feedback__content-btn -next">
+                            <img src="img/prev-arrow-icon.svg" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="dots">
                     <ul>
-                        <li></li>
+                        <li class="active"></li>
                         <li></li>
                         <li></li>
                         <li></li>
@@ -284,7 +293,7 @@
                 </div>
             </div>
         </section>
-        <section class="gallery">
+        <section class="gallery pd">
             <h2 class="gallery__title title-main">
                 <span class="small">chúng ta</span>
                 <span>là một team</span>
@@ -304,7 +313,7 @@
                 </div>            
             </div>
         </section>
-        <section class="register">
+        <section class="register pd">
             <div class="container">
                 <p class="register__text">Bạn đã sẵn sàng tham gia cùng CFD để tạo ra những sản phẩm có giá trị chưa?</p>
                 <a href="register.html" class="register__btn"><span>đăng ký</span></a>
@@ -314,7 +323,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md-7 left">
                     <p class="slogan">
                         Sáng tạo, tinh tế và phù hợp sẽ khiến 
                                     sản phẩm của bạn trở nên khác biệt.
@@ -329,11 +338,11 @@
                         <i><img src="img/skype-icon.svg" alt=""></i>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <div class="col-md-5 right">
                     <ul class="menu">
                         <li><a href="#">Trang chủ</a></li>
                         <li><a href="course.html">Khóa học </a></li>
-                        <li><a href="payment.html">Thanh toán/a></li>
+                        <li><a href="payment.html">Thanh toán</a></li>
                         <li><a href="terms.html">Điều khoản</a></li>
                     </ul>
                     <div class="backtotop">
@@ -341,13 +350,10 @@
                     </div>
                 </div>
             </div>
-            <div class="row bottom">
-                <div class="col-md-3">
+            <div class="bottom">
                     <p>2020 Creative Front-End Dev</p>
-                </div>
-                <div class="col-md-3">
+                
                     <p>Được thiết kế và lập trình bởi CFD Team</p>
-                </div>
             </div>
         </div>
     </footer>
