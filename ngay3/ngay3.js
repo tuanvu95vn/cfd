@@ -22,22 +22,28 @@ function api(url) {
         },
     };
 }
-async function postContact() {
-    let name = "Tuan";
-    let phone = "0987654321";
-    let email = "abc@gmail.com";
-    let title = "asdfsdf";
-    let content = "asdfsadf";
+async function postContact(arr) {
+    let [name, phone, email, website, title, content] = arr
+    console.log(arr)
     let res = await api("https://www.cfdtraining.vn/api/contact").post({
         body: JSON.stringify({
             name,
             phone,
             email,
+            website,
             title,
             content,
         }),
     });
-    console.log(res);
+    console.log(res)
+    if(res.success) {
+
+        document.getElementById('error_message').innerText = ''
+        alert ('Gửi Thành Công');
+      
+
+    }
+    else return res;
 }
 
 function getListCourse() {
@@ -64,11 +70,11 @@ async function renderOnlineList(){
         <div class="btn">
             <div class="trainer">
                 <div class="img-trainer">
-                    <img src="img/avt.jpg" alt="">
+                    <img src="../img/avt.jpg" alt="">
                 </div>
                 <span class="name">Trần Nghĩa</span>
             </div>
-            <a href="register-course.html" class="btn-register"><span>Đăng ký</span></a>
+            <a href="../register-course.html" class="btn-register"><span>Đăng ký</span></a>
         </div>
     </div>`
     })
@@ -91,11 +97,11 @@ async function renderofflineList(){
         <div class="btn">
             <div class="trainer">
                 <div class="img-trainer">
-                    <img src="img/avt.jpg" alt="">
+                    <img src="../img/avt.jpg" alt="">
                 </div>
                 <span class="name">Trần Nghĩa</span>
             </div>
-            <a href="register-course.html" class="btn-register"><span>Đăng ký</span></a>
+            <a href="../register-course.html" class="btn-register"><span>Đăng ký</span></a>
         </div>
     </div>`
     })
@@ -103,5 +109,39 @@ async function renderofflineList(){
 }
 
 
+let $SubmitContact = document.querySelector('.contactpage .form__btn');
+
+$SubmitContact.addEventListener('click', ()=> {
+    document.querySelectorAll('input').forEach(e => {e.style.border =  "1px solid #C4C4C4"})
+    document.querySelector('textarea').style.border =  "1px solid #C4C4C4"
+    
+    form = document.querySelector('.contactpage .form')
+    let arr = [];
+    document.querySelectorAll('input').forEach((e)=> arr.push(e.value));
+    arr.push(document.querySelector('textarea').value)
+    // console.log(arr)
+    postContact(arr)
+    .then(res =>{
+        console.log(res.message)
+        let a = res.message
+        let key =""
+        for(key in a) {
+            if(a[key]) {
+                return([key,a[key]])
+                break
+            }
+        }
+    })
+    .then (res => {
+        let [name_error , des] = res;
+        if(name_error !== 'content'){
+            document.getElementById('error_message').innerText = des
+            document.querySelector(`input[id="${name_error}"]`).style.border = '1px solid red'
+        }
+        else {
+            document.querySelector(`textarea`).style.border = '1px solid red'
+        }        
+    })
+})
 renderOnlineList();
 renderofflineList();
