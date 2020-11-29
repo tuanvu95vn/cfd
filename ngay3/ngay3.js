@@ -35,15 +35,22 @@ async function postContact(arr) {
             content,
         }),
     });
-    console.log(res)
-    if(res.success) {
+    return res;
+}
 
-        document.getElementById('error_message').innerText = ''
-        alert ('Gửi Thành Công');
-      
-
-    }
-    else return res;
+async function updateMemberInfo(arr) {
+    let [name, phone, email, facebook, skype] = arr
+    console.log(arr)
+    let res = await api("https://www.cfdtraining.vn/api/cap-nhat-thong-tin-ca-nhan").post({
+        body: JSON.stringify({
+            name,
+            phone,
+            email,
+            facebook,
+            skype,
+        }),
+    });
+    return res;
 }
 
 function getListCourse() {
@@ -51,6 +58,7 @@ function getListCourse() {
 
 }
 
+let $UpdateInfoMember = document.querySelector('.memberpage .form__btn');
 let $onlineList = document.querySelector('.homepage .online .online__list');
 let $offlineList = document.querySelector('.homepage .offline .offline__list');
 
@@ -122,26 +130,74 @@ $SubmitContact.addEventListener('click', ()=> {
     // console.log(arr)
     postContact(arr)
     .then(res =>{
-        console.log(res.message)
-        let a = res.message
-        let key =""
-        for(key in a) {
-            if(a[key]) {
-                return([key,a[key]])
-                break
+        if(res.success) {
+
+            document.getElementById('error_message').innerText = ''
+            alert ('Gửi Thành Công');
+            return ['','']
+        }
+        else {
+            console.log(res.message)
+            let a = res.message
+            let key =""
+            for(key in a) {
+                if(a[key]) {
+                    return([key,a[key]])
+                    break
+                }
             }
         }
     })
     .then (res => {
         let [name_error , des] = res;
-        if(name_error !== 'content'){
+        if(name_error !== 'content' &&  name_error !== ''){
             document.getElementById('error_message').innerText = des
             document.querySelector(`input[id="${name_error}"]`).style.border = '1px solid red'
         }
-        else {
+        else 
+        if (name_error !== ''){
             document.querySelector(`textarea`).style.border = '1px solid red'
         }        
     })
 })
-renderOnlineList();
-renderofflineList();
+
+
+$UpdateInfoMember.addEventListener('click', ()=> {
+    document.querySelectorAll('input').forEach(e => {e.style.border =  "1px solid #C4C4C4"})    
+    form = document.querySelector('.contactpage .form')
+    let arr = [];
+    document.querySelectorAll('input').forEach((e)=> arr.push(e.value));
+    console.log(arr)
+    updateMemberInfo(arr)
+    .then(res =>{
+        if(res.success) {
+
+            document.getElementById('error_message').innerText = ''
+            alert ('Gửi Thành Công');
+            return ['','']
+        }
+        else {
+            console.log(res.message)
+            let a = res.message
+            let key =""
+            for(key in a) {
+                if(a[key]) {
+                    return([key,a[key]])
+                    break
+                }
+            }
+        }
+    })
+    .then (res => {
+        let [name_error , des] = res;
+        if(name_error !== ''){
+            document.getElementById('error_message').innerText = des
+            document.querySelector(`input[id="${name_error}"]`).style.border = '1px solid red'
+        }
+    })
+})
+
+
+
+    // renderOnlineList();
+// renderofflineList();
